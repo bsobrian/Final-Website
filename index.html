@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Document Title</title>
+    <style>
+        body {
+            background-image: url('bb3.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: rgba(255, 3, 3, 0.361);
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1, p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-container input[type="password"] {
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .Codepassword input[type="password"] {
+            background-color: #000000;
+            color: #640000;
+            border: 2px solid #383838;
+            padding: 5px;
+            width: 200px;
+        }
+
+        .Codepassword label {
+            position: absolute;
+            top: 8px;
+            left: 5px;
+            color: #ffffff;
+        }
+
+        .Codepassword input[type="submit"] {
+            background-color: #000000;
+            color: #720606;
+            border: 2px solid #020202;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .drop-container {
+            position: relative;
+            margin: 100px auto;
+        }
+
+        .drop {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: -30px;
+            margin: 0 auto;
+            background: rgb(95, 9, 9);
+            border-radius: 10px;
+            animation: drip 6.8s infinite cubic-bezier(1, 0, 0.91, 0.19);
+        }
+
+        .drop:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 30px solid rgb(95, 9, 9);
+            top: -22px;
+            animation-delay: 4.3s;
+        }
+
+        .wave {
+            position: relative;
+            opacity: 0;
+            top: 10vh;
+            width: 1px;
+            height: 1px;
+            border: #F00 7px solid;
+            -moz-border-radius: 300px / 150px;
+            -webkit-border-radius: 300px / 150px;
+            border-radius: 500px / 150px;
+            -moz-animation-name: ripple;
+            -webkit-animation-name: ripple;
+            animation-name: ripple;
+            -moz-animation-delay: 6.4s;
+            -webkit-animation-delay: 6.4s;
+            animation-delay: 6.4s;
+            -moz-animation-duration: 6.4s;
+            -webkit-animation-duration: 6.4s;
+            animation-duration: 6.4s;
+            -moz-animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+        }
+
+        .wave:after {
+            content: "";
+            position: absolute;
+            opacity: 1;
+            top: -5px;
+            left: -5px;
+            width: 2px;
+            height: 1px;
+            border: #F00 5px solid;
+            -moz-border-radius: 300px / 150px;
+            -webkit-border-radius: 300px / 150px;
+            border-radius: 300px / 150px;
+            -moz-animation-name: ripple-2;
+            -webkit-animation-name: ripple-2;
+            animation-name: ripple-2;
+            -moz-animation-duration: 6.4s;
+            -webkit-animation-duration: 6.4s;
+            animation-duration: 6.4s;
+            -moz-animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            animation-delay: 4.3s;
+        }
+
+        @keyframes ripple {
+            from {
+                opacity: 1;
+                transform: scale(0);
+            }
+            to {
+                opacity: 0;
+                width: 50px;
+                transform: scale(1.75);
+                border-width: 1.2px;
+            }
+        }
+
+        @keyframes ripple-2 {
+            0% {
+                opacity: 1;
+                top: 0;
+                transform: scale(0) translateX(.4);
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                width: 200px;
+                height: 100px;
+                border-width: 2px;
+                top: -50px;
+                transform: scale(1) translateX(-80px);
+            }
+        }
+
+        @keyframes drip {
+            from {
+                top: -1500px;
+            }
+            to {
+                top: 58px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; font-size: 50px;">Welcome Back :)....</h1>
+    <p style="font-size: 20px;">If you have reached this far it means you have an idea on who murdered me</p>
+    <p style="font-size: 20px;">Please, enter their name (all caps) below.....</p> 
+
+
+    <form action="admin.html" method="post" class="form-container" onsubmit="return false;">
+        <div class="Codepassword">
+            <div class="form">
+                <div class="input-group">
+                    <!-- Set placeholder text -->
+                    <input type="password" name="Codepassword" id="code" placeholder="Enter Name" required />
+                </div>
+                <input type="submit" value="submit" class="submit-btn" onclick="auth(); return false;" />
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function auth() {
+            var code = document.getElementById("code").value;
+            var redirectPage;
+            switch (code) {
+                case "ELLA STRYKER":
+                    redirectPage = "correct.html";
+                    break;
+                default:
+                    alert("Unsuccessful");
+                    return;
+            }
+            console.log("Code:", code);
+            console.log("Redirect Page:", redirectPage);
+
+            window.location.assign(redirectPage);
+            alert("Successful");
+        }
+    </script>
+
+    <div class="drop-container">
+        <div class="drop"></div>
+        <div class="wave"></div>
+    </div>
+</body>
+</html>
